@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>etch-a-sketch</title>
+</head>
+<body>
+    <header class="header">Sketching Board</header>
+    <main class="main">
+        <div class="drawing-board-div"></div>
+        <div class="controls-div">
+            <button id="picked-color-btn" class="mode active">Picked Color</button>
+            <button id="rainbow-btn" class="mode">Rainbow</button>
+            <button id="eraser-btn" class="mode">Eraser</button>
+        </div>
+        <button id="clear-btn">Clear Board</button>
+        <div class="color-pick-div">
+            <span>Pick your color:</span>
+            <input type="color" id="color-picker">
+        </div>
+        <div class="pen-size-div">
+            <label for="size-slider">Pen Size</label>
+            <input id="size-slider" type="range" min="-64" max="-8">
+            <div>1/<span id="size-value"></span> of board length</div>
+        </div>
+    </main>
+    <footer class="footer">Copyright © 2021 ty2huang 
+        <a href="https://github.com/ty2huang/rock-paper-scissors" target="_blank">
+            <i class="fa fa-github"></i>
+        </a>
+    </footer>
+</body>
+</html>
