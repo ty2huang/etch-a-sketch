@@ -21,7 +21,7 @@ function setDefaultColor() {
 
 function changeColor(event) {
     event.preventDefault();
-    if (event.which == 0) return;
+    if (event.buttons === 0) return;
     let backgroundColor;
     if (activeModeId === 'picked-color-btn') {
         backgroundColor = colorPickBtn.value;
