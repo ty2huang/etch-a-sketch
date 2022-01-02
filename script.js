@@ -12,7 +12,7 @@ const penSizeSlider = document.querySelector('#size-slider');
 const sizeValueTxt = document.querySelector('#size-value');
 penSizeSlider.value = -DEFAULT_PEN_SIZE;
 
-let currentPenSize = DEFAULT_PEN_SIZE;
+let currentPenSize = undefined;
 let activeModeId = 'picked-color-btn';
 
 function setDefaultColor() {
@@ -49,12 +49,10 @@ function switchMode(event) {
 }
 
 function showGridSize() {
-    currentPenSize = -penSizeSlider.value;
-    sizeValueTxt.textContent = currentPenSize;
+    sizeValueTxt.textContent = -penSizeSlider.value;
 }
 
-function updateGrid() {
-    showGridSize()
+function recreateGrid() {
     drawingBoardDiv.innerHTML = '';
     drawingBoardDiv.style['grid-template-columns'] = `repeat(${currentPenSize}, 1fr)`
     drawingBoardDiv.style['grid-template-rows'] = `repeat(${currentPenSize}, 1fr)`
@@ -67,13 +65,18 @@ function updateGrid() {
     }
 }
 
+function updateGrid() {
+    if (-penSizeSlider.value === currentPenSize) return;
+    currentPenSize = -penSizeSlider.value;
+    recreateGrid();
+}
+
 modeBtns.forEach(btn => btn.addEventListener('click', switchMode));
 
+clearBoardBtn.addEventListener('click', recreateGrid);
 penSizeSlider.addEventListener('mousemove', showGridSize);
 penSizeSlider.addEventListener('change', updateGrid);
-penSizeSlider.addEventListener('click', updateGrid);
-clearBoardBtn.addEventListener('click', updateGrid);
 
 setDefaultColor();
-showGridSize();
+showGridSize()
 updateGrid();
